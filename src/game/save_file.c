@@ -744,6 +744,23 @@ void save_file_move_cap_to_default_location(void) {
     }
 }
 
+void save_file_set_lives(s8 lives) {
+    struct SaveFile *saveFile = &gSaveBuffer.files[gCurrSaveFileNum - 1][0];
+    saveFile->lives = lives;
+
+    gSaveFileModified = TRUE;
+}
+
+s8 save_file_get_lives(void) {
+    struct SaveFile *saveFile = &gSaveBuffer.files[gCurrSaveFileNum - 1][0];
+
+    if (!save_file_exists(gCurrSaveFileNum - 1) || saveFile->lives < 1) {
+        save_file_set_lives(MARIO_START_LIVES);
+    }
+
+    return saveFile->lives;
+}
+
 #ifdef VERSION_EU
 void eu_set_language(u16 language) {
     gSaveBuffer.menuData[0].language = language;

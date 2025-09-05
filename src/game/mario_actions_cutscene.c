@@ -279,6 +279,7 @@ void handle_save_menu(struct MarioState *m) {
         || gSaveOptSelectIndex == MENU_OPT_SAVE_AND_EXIT
 #endif
         || gSaveOptSelectIndex == MENU_OPT_SAVE_AND_QUIT) {
+            save_file_set_lives(m->numLives);
             save_file_do_save(gCurrSaveFileNum - 1);
 
             if (gSaveOptSelectIndex == MENU_OPT_SAVE_AND_QUIT) {
@@ -719,6 +720,7 @@ void general_star_dance_handler(struct MarioState *m, s32 isInWater) {
         }
     } else if (m->actionState == 1 && gDialogResponse != DIALOG_RESPONSE_NONE) {
         if (gDialogResponse == DIALOG_RESPONSE_YES) {
+            save_file_set_lives(m->numLives);
             save_file_do_save(gCurrSaveFileNum - 1);
         }
         m->actionState = 2;

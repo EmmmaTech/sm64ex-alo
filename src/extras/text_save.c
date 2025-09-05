@@ -171,6 +171,9 @@ s32 write_text_save(s32 fileIndex) {
         fprintf(file, "%s = %s\n", sav_bonus_courses[i], value);
     }
 
+    fprintf(file, "\n[lives]\n");
+    fprintf(file, "count = %d\n", save_file_get_lives());
+
     fprintf(file, "\n[cap]\n");
     for (i = 0; i < NUM_CAP_ON; i++) {
         flags = save_file_get_flags();
@@ -292,6 +295,8 @@ s32 read_text_save(s32 fileIndex) {
             }
         }
     }
+
+    ini_sget(savedata, "lives", "count", "%d", &gSaveBuffer.files[fileIndex][0].lives);
 
     for (i = 0; i < NUM_CAP_ON; i++) {
         value = ini_get(savedata, "cap", "type");

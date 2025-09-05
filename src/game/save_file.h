@@ -32,6 +32,7 @@ struct SaveFile {
     Vec3s capPos;
 
     u32 flags;
+    s8 lives;
 
     // Star flags for each course.
     // The most significant bit of the byte *following* each course is set if the
@@ -158,6 +159,8 @@ s32 save_file_get_cap_pos(Vec3s capPos);
 void save_file_set_sound_mode(u16 mode);
 u16 save_file_get_sound_mode(void);
 void save_file_move_cap_to_default_location(void);
+void save_file_set_lives(s8 lives);
+s8 save_file_get_lives(void);
 
 void disable_warp_checkpoint(void);
 void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);

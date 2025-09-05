@@ -62,7 +62,7 @@ extern "C" {
 
 /* definition for EEPROM */
 
-#define EEPROM_MAXBLOCKS	64
+#define EEPROM_MAXBLOCKS	70
 #define EEP16K_MAXBLOCKS	256
 #define EEPROM_BLOCK_SIZE	8
 
