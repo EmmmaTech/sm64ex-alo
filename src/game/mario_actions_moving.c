@@ -505,6 +505,10 @@ void update_walking_speed(struct MarioState *m) {
     }
 
 #ifdef CHEATS_ACTIONS
+    if (Cheats.EnableCheats && Cheats.SuperSpeed) {
+        m->forwardVel *= 1.6f;
+    }
+
     if (Cheats.EnableCheats && Cheats.Responsive) {
         m->faceAngle[1] = m->intendedYaw;
     } else {
