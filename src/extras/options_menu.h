@@ -12,7 +12,9 @@
 #define DEF_OPT_TOGGLE(lbl, bv) \
     { .type = OPT_TOGGLE, .label = lbl, .bval = bv }
 #define DEF_OPT_SCROLL(lbl, uv, min, max, st) \
-    { .type = OPT_SCROLL, .label = lbl, .uval = uv, .scrMin = min, .scrMax = max, .scrStep = st }
+    { .type = OPT_SCROLL, .label = lbl, .uval = uv, .scrType = SCROLL_INT, .scrMin = min, .scrMax = max, .scrStep = st }
+#define DEF_OPT_SCROLLF(lbl, fv, min, max, st) \
+    { .type = OPT_SCROLL, .label = lbl, .fval = fv, .scrType = SCROLL_FLOAT, .scrMinF = min, .scrMaxF = max, .scrStepF = st }
 #define DEF_OPT_CHOICE(lbl, uv, ch) \
     { .type = OPT_CHOICE, .label = lbl, .uval = uv, .choices = ch, .numChoices = sizeof(ch) / sizeof(ch[0]) }
 #define DEF_OPT_SUBMENU(lbl, nm) \
@@ -39,11 +41,18 @@ enum OptType {
     OPT_BUTTON,
 };
 
+enum ScrollType {
+    SCROLL_INVALID = 0,
+    SCROLL_INT,
+    SCROLL_FLOAT,
+};
+
 struct Option {
     enum OptType type;
     const u8 *label;
     union {
         u32 *uval;
+        f32 *fval;
         bool *bval;
     };
     union {
@@ -52,9 +61,19 @@ struct Option {
             u32 numChoices;
         };
         struct {
-            u32 scrMin;
-            u32 scrMax;
-            u32 scrStep;
+            enum ScrollType scrType;
+            union {
+                struct {
+                    u32 scrMin;
+                    u32 scrMax;
+                    u32 scrStep;
+                };
+                struct {
+                    f32 scrMinF;
+                    f32 scrMaxF;
+                    f32 scrStepF;
+                };
+            };
         };
         struct SubMenu *nextMenu;
         void (*actionFn)(struct Option *, s32);

@@ -344,6 +344,13 @@ static inline s32 wrap_add(s32 a, const s32 b, const s32 min, const s32 max) {
     return a;
 }
 
+static inline f32 wrap_addf(f32 a, const f32 b, const f32 min, const f32 max) {
+    a += b;
+    if (a < min) a = max - (min - a) + 1;
+    else if (a > max) a = min + (a - max) - 1;
+    return a;
+}
+
 static void uint_to_hex(u32 num, u8 *dst) {
     u8 places = 4;
     while (places--) {
@@ -367,10 +374,18 @@ static void optmenu_draw_text(s16 x, s16 y, const u8 *str, u8 col) {
 }
 
 static void optmenu_draw_opt_scroll(const struct Option *opt, s16 y) {
-    s16 maxvar = opt->scrMax - opt->scrMin;
-    s16 minvar = *opt->uval - opt->scrMin;
+    s16 minvar, maxvar;
+    f32 minvarf, maxvarf;
+
+    if (opt->scrType == SCROLL_INT) {
+        maxvar = opt->scrMax - opt->scrMin;
+        minvar = *opt->uval - opt->scrMin;
+    } else {
+        maxvarf = opt->scrMaxF - opt->scrMinF;
+        minvarf = *opt->fval - opt->scrMinF;
+    }
     s16 yOffset = (SCREEN_HEIGHT - y);
-    s16 xVarPos = (((f32)minvar/maxvar)*128);
+    s16 xVarPos = (opt->scrType == SCROLL_INT) ? (((f32)minvar/maxvar)*128) : ((minvarf/maxvarf)*128);
 
     // Grey bar
     print_solid_color_quad(96, yOffset + 0, 224, yOffset + 6, 0x80, 0x80, 0x80, 0xFF);
@@ -401,8 +416,13 @@ static void optmenu_draw_opt(const struct Option *opt, s16 x, s16 y, u8 sel) {
             break;
 
         case OPT_SCROLL:
-            *opt->uval = CLAMP(*opt->uval, opt->scrMin, opt->scrMax); // Avoid bar going off limits
-            INT_TO_STR_DIFF(*opt->uval, buf);
+            if (opt->scrType == SCROLL_INT) {
+                *opt->uval = CLAMP(*opt->uval, opt->scrMin, opt->scrMax); // Avoid bar going off limits
+                INT_TO_STR_DIFF(*opt->uval, buf);
+            } else {
+                *opt->fval = CLAMP(*opt->fval, opt->scrMinF, opt->scrMaxF);
+                float_to_str(*opt->fval, buf);
+            }
             optmenu_draw_text(x, y-13, buf, sel);
             optmenu_draw_opt_scroll(opt, y-11);
             break;
@@ -445,7 +465,10 @@ static void optmenu_opt_change(struct Option *opt, s32 val) {
             break;
 
         case OPT_SCROLL:
-            *opt->uval = wrap_add(*opt->uval, opt->scrStep * val, opt->scrMin, opt->scrMax);
+            if (opt->scrType == SCROLL_INT)
+                *opt->uval = wrap_add(*opt->uval, opt->scrStep * val, opt->scrMin, opt->scrMax);
+            else
+                *opt->fval = wrap_addf(*opt->fval, opt->scrStepF * val, opt->scrMinF, opt->scrMaxF);
             break;
 
         case OPT_SUBMENU:

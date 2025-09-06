@@ -21,7 +21,7 @@
 #include "options_menu.h"
 #include "cheats.h"
 
-struct CheatList Cheats;
+struct CheatList Cheats = { .SpeedModifier = 1.0f };
 
 #ifdef VERSION_CN // hack, todo remove
 #define SIZEOPTC(n) n * 2
@@ -112,7 +112,7 @@ struct Option optsCheats[] = {
     DEF_OPT_TOGGLE( optsCheatsStr[2], &Cheats.InfiniteHealth ),
     DEF_OPT_TOGGLE( optsCheatsStr[3], &Cheats.InfiniteLives ),
     DEF_OPT_TOGGLE( optsCheatsStr[4], &Cheats.InvinciblePlayer ),
-    DEF_OPT_TOGGLE( optsCheatsStr[5], &Cheats.SuperSpeed ),
+    DEF_OPT_SCROLLF( optsCheatsStr[5], &Cheats.SpeedModifier, 1.0f, 5.0f, 0.1f ),
     DEF_OPT_TOGGLE( optsCheatsStr[6], &Cheats.Responsive ),
     DEF_OPT_TOGGLE( optsCheatsStr[7], &Cheats.ExitAnywhere ),
     DEF_OPT_TOGGLE( optsCheatsStr[8], &Cheats.NoFallDamage ),
@@ -186,11 +186,6 @@ void cheats_infinite_lives(struct MarioState *m) {
         m->numLives += 1;
 }
 
-void cheats_super_speed(struct MarioState *m) {
-    if (Cheats.SuperSpeed && m->forwardVel > 0)
-        m->forwardVel += 100;
-}
-
 void cheats_invincible_player(struct MarioState *m) {
     if (Cheats.InvinciblePlayer)
         m->invincTimer = 1;
@@ -201,8 +196,6 @@ void cheats_mario_action(struct MarioState *m) {
         cheats_infinite_health(m);
 
         cheats_infinite_lives(m);
-
-        cheats_super_speed(m);
 
         cheats_invincible_player(m);
     }

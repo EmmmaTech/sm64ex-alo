@@ -16,6 +16,9 @@
 #include "behavior_data.h"
 #include "level_table.h"
 #include "rumble_init.h"
+#ifdef CHEATS_ACTIONS
+#include "extras/cheats.h"
+#endif
 
 #define MIN_SWIM_STRENGTH 160
 #define MIN_SWIM_SPEED 16.0f
@@ -243,6 +246,12 @@ static void update_swimming_speed(struct MarioState *m, f32 decelThreshold) {
     if (m->forwardVel > maxSpeed) {
         m->forwardVel = maxSpeed;
     }
+
+#ifdef CHEATS_ACTIONS
+        if (Cheats.EnableCheats) {
+            m->forwardVel *= Cheats.SpeedModifier;
+        }
+#endif
 
     if (m->forwardVel > decelThreshold) {
         m->forwardVel -= 0.5f;

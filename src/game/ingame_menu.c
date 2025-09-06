@@ -1102,6 +1102,47 @@ void int_to_str(s32 num, u8 *dst) {
     dst[pos] = DIALOG_CHAR_TERMINATOR;
 }
 
+void float_to_str(f32 num, u8 *dst) {
+    s32 digit1;
+    s32 digit2;
+    s32 digit3;
+    s32 digit4;
+
+    s8 pos = 0;
+
+    if (num > 99.99f) {
+        dst[0] = 0x00; dst[1] = DIALOG_CHAR_TERMINATOR;
+        return;
+    }
+
+    digit1 = num / 10.0f;
+    digit2 = num - (digit1 * 10.0f);
+    digit3 = (num - digit1 * 10.0f - digit2) * 10.0f;
+    digit4 = (num - (digit1 * 10.0f) - digit2 - (digit3 / 10.0f)) * 100.0f;
+
+    if (digit1 != 0) {
+        dst[pos] = digit1; pos++;
+    }
+
+    dst[pos] = digit2;
+    pos++;
+
+    if (digit3 != 0 || digit4 != 0) {
+        dst[pos] = 0x3F;  // '.', taken directly from charmap.txt
+        pos++;
+    }
+
+    if (digit3 != 0 || digit4 != 0) {
+        dst[pos] = digit3; pos++;
+    }
+
+    if (digit4 != 0) {
+        dst[pos] = digit4; pos++;
+    }
+
+    dst[pos] = DIALOG_CHAR_TERMINATOR;
+}
+
 #ifdef VERSION_CN
 void int_to_str_2(s32 num, u8 *dst) {
     s32 digit1;

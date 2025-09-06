@@ -44,7 +44,8 @@ struct CheatList {
     bool    InfiniteHealth;
     bool    InfiniteLives;
     bool    InvinciblePlayer;
-    bool    SuperSpeed;
+    //bool    SuperSpeed;
+    f32     SpeedModifier;
     bool    Responsive;
     bool    ExitAnywhere;
     bool    NoFallDamage;
