@@ -235,6 +235,12 @@ static void update_swimming_speed(struct MarioState *m, f32 decelThreshold) {
     f32 buoyancy = get_buoyancy(m);
     f32 maxSpeed = 28.0f;
 
+#ifdef CHEATS_ACTIONS
+    if (Cheats.EnableCheats) {
+        maxSpeed *= Cheats.SpeedModifier;
+    }
+#endif
+
     if (m->action & ACT_FLAG_STATIONARY) {
         m->forwardVel -= 2.0f;
     }
@@ -246,12 +252,6 @@ static void update_swimming_speed(struct MarioState *m, f32 decelThreshold) {
     if (m->forwardVel > maxSpeed) {
         m->forwardVel = maxSpeed;
     }
-
-#ifdef CHEATS_ACTIONS
-        if (Cheats.EnableCheats) {
-            m->forwardVel *= Cheats.SpeedModifier;
-        }
-#endif
 
     if (m->forwardVel > decelThreshold) {
         m->forwardVel -= 0.5f;
@@ -551,6 +551,13 @@ static s32 act_breaststroke(struct MarioState *m) {
     if (m->actionTimer >= 9) {
         m->forwardVel += 1.5f;
     }
+
+#ifdef CHEATS_ACTIONS
+    if (Cheats.EnableCheats) {
+        m->forwardVel *= Cheats.SpeedModifier;
+        sSwimStrength *= Cheats.SpeedModifier;
+    }
+#endif
 
     if (m->actionTimer >= 2) {
         if (m->actionTimer < 6 && (m->input & INPUT_A_PRESSED)) {
