@@ -870,7 +870,7 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
 
 #ifdef CHEATS_ACTIONS
             if (Cheats.EnableCheats && Cheats.SuperSpeed) {
-                m->forwardVel *= 1.3f;
+                m->forwardVel *= CHEATS_SUPER_SPEED_MODIFIER;
             }
 #endif
             break;
