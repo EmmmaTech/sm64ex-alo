@@ -32,6 +32,8 @@
 #define QOL_FEATURE_ENDING_SCREEN_START (0 || QOL_FEATURES)
 /// Makes skybox have better precision movement and fixes fov
 #define QOL_FEATURE_BETTER_SKYBOX (0 || QOL_FEATURES)
+// Makes Mario slide on a wall, giving a grace period for a wall jump
+#define QOL_FEATURE_MARIO_WALL_SLIDE (0 || QOL_FEATURES)
 
 // --| Quality of life fixes
 // --| Code Fixes

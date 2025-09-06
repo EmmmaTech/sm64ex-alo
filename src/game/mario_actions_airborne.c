@@ -1379,18 +1379,21 @@ s32 act_air_hit_wall(struct MarioState *m) {
         mario_drop_held_object(m);
     }
 
+#ifdef QOL_FEATURE_MARIO_WALL_SLIDE
     if (++(m->actionTimer) <= 20 && m->pos[1] > (m->floorHeight + 10.0f)) {
         m->pos[1] -= 8.0f;
         m->marioObj->header.gfx.pos[1] = m->pos[1];  // mario is rendered to stay on the wall when we want him to slide down, this is a crud way to fix that
         m->particleFlags |= PARTICLE_DUST;
+#else
+    if (++(m->actionTimer) <= 2) {
+#endif
         if (m->input & INPUT_A_PRESSED) {
             m->vel[1] = 52.0f;
             m->faceAngle[1] += 0x8000;
             return set_mario_action(m, ACT_WALL_KICK_AIR, 0);
         }
     }
-    /*
-    hard bonk won't work for allowing wall jumps now
+#ifndef QOL_FEATURE_MARIO_WALL_SLIDE
     else if (m->forwardVel >= 38.0f) {
         m->wallKickTimer = 5;
         if (m->vel[1] > 0.0f) {
@@ -1400,7 +1403,7 @@ s32 act_air_hit_wall(struct MarioState *m) {
         m->particleFlags |= PARTICLE_VERTICAL_STAR;
         return set_mario_action(m, ACT_BACKWARD_AIR_KB, 0);
     } 
-    */
+#endif
     else {
         m->wallKickTimer = 5;
         if (m->vel[1] > 0.0f) {
