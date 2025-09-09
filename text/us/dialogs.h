@@ -1998,12 +1998,13 @@ I knew you could do it!\n\
 Now I have a very special\n\
 message for you.\n\
 『Thanks for playing Super\n\
-Mario 64! This is the\n\
-end of the game, but not\n\
-the end of the fun." \
-KEEP_ON_PLAYING "』\n\
+Mario 64! Unfortunately,\n\
+this is the end of the\n\
+game for you. Goodbye\n\
+Mario.』\n\
 \n\
-The Super Mario 64 Team"))
+Emma & The Super Mario\n\
+64 Team"))
 
 DEFINE_DIALOG(DIALOG_162, 1, 4, 30, 200, _("\
 No, no, no! Not you\n\
