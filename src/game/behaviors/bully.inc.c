@@ -185,6 +185,12 @@ void bully_step(void) {
     bully_play_stomping_sound();
     obj_check_floor_death(collisionFlags, sObjFloor);
 
+    f32 waterLevel = find_water_level(o->oPosX, o->oPosZ);
+
+    if (o->oPosY <= waterLevel) {
+        o->oAction = BULLY_ACT_LAVA_DEATH;
+    }
+
     if (o->oBullySubtype & BULLY_STYPE_CHILL) {
         if (o->oPosY < 1030.0f) {
             o->oAction = BULLY_ACT_LAVA_DEATH;

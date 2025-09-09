@@ -231,7 +231,7 @@ struct MovtexObject gMovtexNonColored[] = {
     // It was probably too large however, resulting in overflowing texture
     // coordinates or other artifacts, so they converted it to a movtex
     // mesh with 9 vertices, subdividing the rectangle into 4 smaller ones.
-    { MOVTEX_LLL_LAVA_FLOOR, TEXTURE_LAVA, 9, lll_movtex_tris_lava_floor, dl_waterbox_rgba16_begin,
+    { MOVTEX_LLL_LAVA_FLOOR, TEXTURE_WATER, 9, lll_movtex_tris_lava_floor, dl_waterbox_rgba16_begin,
       dl_waterbox_end, lll_dl_lava_floor, 0xff, 0xff, 0xff, 0xc8, LAYER_TRANSPARENT },
     { MOVTEX_VOLCANO_LAVA_FALL, TEXTURE_LAVA, 16, lll_movtex_tris_lavafall_volcano,
       dl_waterbox_rgba16_begin, dl_waterbox_end, lll_dl_lavafall_volcano, 0xff, 0xff, 0xff, 0xb4,

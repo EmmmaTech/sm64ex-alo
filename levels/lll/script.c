@@ -42,11 +42,11 @@ static const LevelScript script_func_local_2[] = {
     OBJECT(/*model*/ MODEL_LLL_DRAWBRIDGE_PART,                /*pos*/ -1919,  307,  3648, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLDrawbridgeSpawner),
     OBJECT(/*model*/ MODEL_LLL_ROTATING_BLOCK_FIRE_BARS,       /*pos*/ -5119,  307, -4095, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLRotatingBlockWithFireBars),
     OBJECT(/*model*/ MODEL_LLL_ROTATING_HEXAGONAL_RING,        /*pos*/     0,    0,     0, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLRotatingHexagonalRing),
-    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/  3968,    0,  1408, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
-    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/ -5759,    0,  3072, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
-    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/  2816,    0,   512, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
-    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/ -1791,    0, -4095, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
-    OBJECT(/*model*/ MODEL_LLL_SINKING_SQUARE_PLATFORMS,       /*pos*/  3840,    0, -3199, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingSquarePlatforms),
+    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/  3968,  120,  1408, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
+    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/ -5759,  120,  3072, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
+    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/  2816,  120,   512, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
+    OBJECT(/*model*/ MODEL_LLL_SINKING_RECTANGULAR_PLATFORM,   /*pos*/ -1791,  120, -4095, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRectangularPlatform),
+    OBJECT(/*model*/ MODEL_LLL_SINKING_SQUARE_PLATFORMS,       /*pos*/  3840,  120, -3199, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingSquarePlatforms),
     OBJECT(/*model*/ MODEL_LLL_TILTING_SQUARE_PLATFORM,        /*pos*/   922, -153,  2150, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLTiltingInvertedPyramid),
     OBJECT(/*model*/ MODEL_LLL_TILTING_SQUARE_PLATFORM,        /*pos*/  1741, -153,  1741, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLTiltingInvertedPyramid),
     OBJECT(/*model*/ MODEL_LLL_TILTING_SQUARE_PLATFORM,        /*pos*/  1741, -153,  2560, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLTiltingInvertedPyramid),
@@ -56,12 +56,12 @@ static const LevelScript script_func_local_2[] = {
 };
 
 static const LevelScript script_func_local_3[] = {
-    OBJECT(/*model*/ MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, /*pos*/  1124,    0, -4607, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLMovingOctagonalMeshPlatform),
-    OBJECT(/*model*/ MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, /*pos*/  7168,    0,  2432, /*angle*/ 0,  0, 0, /*bhvParam*/ BPARAM2(0x01), /*bhv*/ bhvLLLMovingOctagonalMeshPlatform),
-    OBJECT(/*model*/ MODEL_LLL_SINKING_ROCK_BLOCK,             /*pos*/  7168,    0,  7296, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRockBlock),
+    OBJECT(/*model*/ MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, /*pos*/  1124,  120, -4607, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLMovingOctagonalMeshPlatform),
+    OBJECT(/*model*/ MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, /*pos*/  7168,  120,  2432, /*angle*/ 0,  0, 0, /*bhvParam*/ BPARAM2(0x01), /*bhv*/ bhvLLLMovingOctagonalMeshPlatform),
+    OBJECT(/*model*/ MODEL_LLL_SINKING_ROCK_BLOCK,             /*pos*/  7168,  120,  7296, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLSinkingRockBlock),
     OBJECT(/*model*/ MODEL_LLL_ROLLING_LOG,                    /*pos*/  6144,  307,  6016, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLRollingLog),
     OBJECT(/*model*/ MODEL_LLL_ROTATING_HEXAGONAL_PLATFORM,    /*pos*/ -5119,    0, -4095, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLRotatingHexagonalPlatform),
-    OBJECT(/*model*/ MODEL_NONE,                               /*pos*/ -3583,    0, -4095, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLFloatingWoodBridge),
+    OBJECT(/*model*/ MODEL_NONE,                               /*pos*/ -3583,  120, -4095, /*angle*/ 0,  0, 0, /*bhvParam*/ 0, /*bhv*/ bhvLLLFloatingWoodBridge),
     RETURN(),
 };
 
@@ -130,6 +130,7 @@ const LevelScript level_lll_entry[] = {
     INIT_LEVEL(),
     LOAD_MIO0        (/*seg*/ 0x07, _lll_segment_7SegmentRomStart, _lll_segment_7SegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x09, _fire_mio0SegmentRomStart, _fire_mio0SegmentRomEnd),
+    LOAD_MIO0_TEXTURE(/*seg*/ 0x10, _water_mio0SegmentRomStart, _water_mio0SegmentRomEnd),
     LOAD_MIO0        (/*seg*/ 0x0A, _bitfs_skybox_mio0SegmentRomStart, _bitfs_skybox_mio0SegmentRomEnd),
     LOAD_MIO0        (/*seg*/ 0x0B, _effect_mio0SegmentRomStart, _effect_mio0SegmentRomEnd),
     LOAD_MIO0        (/*seg*/ 0x05, _group2_mio0SegmentRomStart, _group2_mio0SegmentRomEnd),
@@ -203,7 +204,7 @@ const LevelScript level_lll_entry[] = {
         TERRAIN(/*terrainData*/ lll_seg7_area_1_collision),
         MACRO_OBJECTS(/*objList*/ lll_seg7_area_1_macro_objs),
         SHOW_DIALOG(/*index*/ 0x00, DIALOG_097),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_HOT),
+        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_WATER),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
     END_AREA(),
 

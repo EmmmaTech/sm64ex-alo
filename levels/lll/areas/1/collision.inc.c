@@ -2531,7 +2531,7 @@ const Collision lll_seg7_area_1_collision[] = {
     COL_TRI(97, 521, 522),
     COL_TRI(97, 92, 521),
     COL_TRI(376, 524, 525),
-    COL_TRI_INIT(SURFACE_BURNING, 82),
+    COL_TRI_INIT(SURFACE_NEW_WATER_BOTTOM, 82),
     COL_TRI(77, 73, 41),
     COL_TRI(41, 39, 72),
     COL_TRI(73, 35, 41),
@@ -2731,6 +2731,8 @@ const Collision lll_seg7_area_1_collision[] = {
     COL_TRI_STOP(),
     COL_SPECIAL_INIT(1),
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_null_start, /*pos*/ -3839, 154, 6272, /*yaw*/ 64), // unused, probably an early way to set initial position
+    COL_WATER_BOX_INIT(1),
+    COL_WATER_BOX(0, -8191, -8191, 8192, 8192, 120),
     COL_END(),
 #endif
 };
